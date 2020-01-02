@@ -10,15 +10,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("customerDao")
-public class CustomerDaoImpl implements CustomerDao{
-    
+public class CustomerDaoImpl implements CustomerDao {
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
-    @Override
-    public List<Customer> queryCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<DiscountCode> queryDiscountCode() {
@@ -27,8 +22,35 @@ public class CustomerDaoImpl implements CustomerDao{
     }
 
     @Override
+    public DiscountCode getDiscountCode(String code) {
+        String sql = "SELECT * FROM DISCOUNT_CODE WHERE DISCOUNT_CODE = ?";
+        DiscountCode dc = jdbcTemplate.queryForObject(sql, new Object[]{code}, RM.discountCode);
+        return dc;
+    }
+
+    @Override
+    public void saveDiscountCode(DiscountCode dc) {
+        String sql = "INSERT INTO DISCOUNT_CODE(DISCOUNT_CODE, RATE) VALUES(?, ?)";
+        jdbcTemplate.update(sql, dc.getDiscountCode(), dc.getRate());
+    }
+
+    @Override
+    public void updateDiscountCode(DiscountCode dc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteDiscountCode(String code) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public List<MicroMarket> queryMicroMarket() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public List<Customer> queryCustomer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
