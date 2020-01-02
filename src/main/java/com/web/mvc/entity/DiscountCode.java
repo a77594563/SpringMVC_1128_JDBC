@@ -19,6 +19,11 @@ public class DiscountCode {
     public void setRate(Double rate) {
         this.rate = rate;
     }
+
+    @Override
+    public String toString() {
+        return "DiscountCode{" + "discountCode=" + discountCode + ", rate=" + rate + '}';
+    }
     
     
 }

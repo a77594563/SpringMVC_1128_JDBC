@@ -18,6 +18,7 @@
 
         <div class="content">
             <h2 class="content-subhead">How to use this layout</h2>
+            ${list}
         </div>
     </div>
 </div>
