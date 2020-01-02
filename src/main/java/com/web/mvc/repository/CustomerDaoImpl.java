@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-@Repository("customerDao")
+@Repository(value = "customerDao")
 public class CustomerDaoImpl implements CustomerDao {
 
     @Autowired
@@ -27,7 +27,7 @@ public class CustomerDaoImpl implements CustomerDao {
         DiscountCode dc = jdbcTemplate.queryForObject(sql, new Object[]{code}, RM.discountCode);
         return dc;
     }
-
+    
     @Override
     public void saveDiscountCode(DiscountCode dc) {
         String sql = "INSERT INTO DISCOUNT_CODE(DISCOUNT_CODE, RATE) VALUES(?, ?)";
@@ -36,12 +36,14 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public void updateDiscountCode(DiscountCode dc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE DISCOUNT_CODE SET RATE = ? WHERE DISCOUNT_CODE = ?";
+        jdbcTemplate.update(sql, dc.getRate(), dc.getDiscountCode());
     }
 
     @Override
     public void deleteDiscountCode(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM DISCOUNT_CODE WHERE DISCOUNT_CODE = ?";
+        jdbcTemplate.update(sql, code);
     }
 
     @Override
@@ -53,4 +55,5 @@ public class CustomerDaoImpl implements CustomerDao {
     public List<Customer> queryCustomer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

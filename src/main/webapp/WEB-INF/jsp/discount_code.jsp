@@ -24,7 +24,8 @@
                         <fieldset>
                             <form:input path="discountCode" placeholder="請輸入折扣碼" />
                             <form:input path="rate" placeholder="請輸入折扣" />
-                            <button type="submit" class="pure-button pure-button-primary">add</button>
+                            <input type="hidden" id="_method" name="_method" value="${_method}">
+                            <button type="submit" class="pure-button pure-button-primary">${_method}</button>
                             <button type="reset" class="pure-button pure-button-primary">reset</button>
                         </fieldset>
                     </form:form>
@@ -42,7 +43,7 @@
                             <c:forEach var="dc" items="${list}">
                                 <tr>
                                     <td><button type="button" class="pure-button pure-button-primary">刪除</button></td>
-                                    <td><a href="#">${dc.discountCode}</a></td>
+                                    <td><a href="${pageContext.request.contextPath}/mvc/discount_code/${dc.discountCode}">${dc.discountCode}</a></td>
                                     <td>${dc.rate}</td>
                                 </tr>
                             </c:forEach>
