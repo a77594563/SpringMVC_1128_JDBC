@@ -24,12 +24,12 @@
             <!-- Body -->
             <div id="main">
                 <div class="header">
-                    <h1>Micro Market</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <h1>MicroMarket</h1>
+                    <h2>市場區域資料維護</h2>
                 </div>
 
                 <div class="content">
-                    <h2 class="content-subhead">市場區域維護</h2>
+                    <h2 class="content-subhead">市場區域資料維護</h2>
                     <form:form modelAttribute="po" id="myform" method="post" action="${pageContext.request.contextPath}/mvc/micro_market/" class="pure-form">
                         <fieldset>
                             <form:input path="zipCode" placeholder="請輸入 zipCode" /><p/>
@@ -41,7 +41,7 @@
                             <button type="reset" class="pure-button pure-button-primary">reset</button>
                         </fieldset>
                     </form:form>
-                    <h2 class="content-subhead">市場區域列表</h2>
+                    <h2 class="content-subhead">市場區域資料列表</h2>
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr>
@@ -54,13 +54,13 @@
                         </thead>
 
                         <tbody>
-                            <c:forEach var="mm" items="${list}">
+                            <c:forEach var="item" items="${list}">
                                 <tr>
-                                    <td><a href="${pageContext.request.contextPath}/mvc/micro_market/${mm.zipCode}" class="delete">刪除</a></td>
-                                    <td><a href="${pageContext.request.contextPath}/mvc/micro_market/${mm.zipCode}">${mm.zipCode}</a></td>
-                                    <td>${mm.radius}</td>
-                                    <td>${mm.areaLength}</td>
-                                    <td>${mm.areaWidth}</td>
+                                    <td title="按我一下可刪除"><a href="${pageContext.request.contextPath}/mvc/micro_market/${item.zipCode}" class="delete">刪除</a></td>
+                                    <td title="按我一下可修改"><a href="${pageContext.request.contextPath}/mvc/micro_market/${item.zipCode}">${item.zipCode}</a></td>
+                                    <td>${item.radius}</td>
+                                    <td>${item.areaLength}</td>
+                                    <td>${item.areaWidth}</td>
                                 </tr>
                             </c:forEach>
                         </tbody>

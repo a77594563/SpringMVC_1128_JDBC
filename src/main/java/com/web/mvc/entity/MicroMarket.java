@@ -1,9 +1,10 @@
 package com.web.mvc.entity;
+
 public class MicroMarket {
     private String zipCode;
-    private Double radius;
-    private Double areaLength;
-    private Double areaWidth;
+    private double radius;
+    private double areaLength;
+    private double areaWidth;
 
     public String getZipCode() {
         return zipCode;
@@ -13,34 +14,30 @@ public class MicroMarket {
         this.zipCode = zipCode;
     }
 
-    public Double getRadius() {
+    public double getRadius() {
         return radius;
     }
 
-    public void setRadius(Double radius) {
+    public void setRadius(double radius) {
         this.radius = radius;
     }
 
-    public Double getAreaLength() {
+    public double getAreaLength() {
         return areaLength;
     }
 
-    public void setAreaLength(Double areaLength) {
+    public void setAreaLength(double areaLength) {
         this.areaLength = areaLength;
     }
 
-    public Double getAreaWidth() {
+    public double getAreaWidth() {
         return areaWidth;
     }
 
-    public void setAreaWidth(Double areaWidth) {
+    public void setAreaWidth(double areaWidth) {
         this.areaWidth = areaWidth;
     }
 
-    @Override
-    public String toString() {
-        return "MicroMarket{" + "zipCode=" + zipCode + ", radius=" + radius + ", areaLength=" + areaLength + ", areaWidth=" + areaWidth + '}';
-    }
     
     
 }

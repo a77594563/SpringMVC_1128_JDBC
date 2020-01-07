@@ -1,11 +1,12 @@
 package com.web.mvc.controller;
 
+import com.web.mvc.entity.DiscountCode;
 import com.web.mvc.entity.MicroMarket;
 import com.web.mvc.repository.spec.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/micro_market")
-public class MicroMarketController1 {
+public class MicroMarketController {
     
     @Autowired
     @Qualifier("customerDao")
     CustomerDao dao;
     
-    @RequestMapping("/input")
-    public String input(Model model){
+    @GetMapping("/input")
+    public String input(Model model) {
         model.addAttribute("po", new MicroMarket());
         model.addAttribute("list", dao.queryMicroMarket());
         model.addAttribute("_method", "POST");
@@ -31,7 +32,7 @@ public class MicroMarketController1 {
     }
     
     @GetMapping("/{code}")
-    public String get(@PathVariable("code") String code, Model model){
+    public String get(@PathVariable("code") String code, Model model) {
         MicroMarket mm = dao.getMicroMarket(code);
         model.addAttribute("po", mm);
         model.addAttribute("list", dao.queryMicroMarket());
@@ -42,18 +43,19 @@ public class MicroMarketController1 {
     @PostMapping("/")
     public String save(@ModelAttribute MicroMarket mm) {
         dao.saveMicroMarket(mm);
-        return "redirect: ./input";
+        return "redirect:./input";
     }
     
     @PutMapping("/")
     public String update(@ModelAttribute MicroMarket mm) {
         dao.updateMicroMarket(mm);
-        return "redirect: ./input";
+        return "redirect:./input";
     }
     
     @DeleteMapping("/{code}")
     public String delete(@PathVariable("code") String code) {
         dao.deleteMicroMarket(code);
-        return "redirect: ./input";
+        return "redirect:./input";
     }
+    
 }

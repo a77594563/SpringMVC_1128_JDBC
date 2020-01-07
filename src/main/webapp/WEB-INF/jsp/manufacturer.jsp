@@ -25,42 +25,35 @@
 
             <div id="main">
                 <div class="header">
-                    <h1>Customer</h1>
-                    <h2>客戶資料資料維護</h2>
+                    <h1>Manufacturer</h1>
+                    <h2>製造商資料維護</h2>
                 </div>
                 <table>
                     <td valign="top">
                         <div class="content">
-                            <form:form modelAttribute="po" id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/customer/">
+                            <form:form modelAttribute="po" id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/manufacturer/">
                                 <fieldset>
                                     <legend>
-                                        <h2 class="content-subhead">客戶資料資料維護</h2>
+                                        <h2 class="content-subhead">製造商資料維護</h2>
                                     </legend>
                                     <table>
                                         <tr>
                                             <td valign="top" style="padding: 5px"> 
-                                                <form:input path="customerId" placeholder="customerId" /><p/>
-                                                <form:select path="discountCode" 
-                                                             items="${list_dc}" 
-                                                             itemLabel="label" 
-                                                             itemValue="discountCode"/><p/>
-                                                <form:select path="zip" 
-                                                             items="${list_mm}" 
-                                                             itemLabel="zipCode" 
-                                                             itemValue="zipCode"/><p/>
-                                                <form:input path="name" placeholder="name" />
+                                                <form:input path="manufacturerId" placeholder="manufacturerId" type="number"/><p/>
+                                                <form:input path="name" placeholder="name" /><p/>
+                                                <form:input path="addressline1" placeholder="addressline1" /><p/>
+                                                <form:input path="addressline2" placeholder="addressline2" />
                                             </td>
                                             <td valign="top" style="padding: 5px">
-                                                <form:input path="addressline1" placeholder="addressline1" /><p/>
-                                                <form:input path="addressline2" placeholder="addressline2" /><p/>
                                                 <form:input path="city" placeholder="city" /><p/>
-                                                <form:input path="state" placeholder="state" />
+                                                <form:input path="state" placeholder="state" /><p/>
+                                                <form:input path="zip" placeholder="zip" /><p/>
                                             </td>
                                             <td valign="top" style="padding: 5px">
                                                 <form:input path="phone" placeholder="phone" /><p/>
                                                 <form:input path="fax" placeholder="fax" /><p/>
                                                 <form:input path="email" placeholder="email" /><p/>
-                                                <form:input path="creditLimit" placeholder="creditLimit" type="number" />
+                                                <form:input path="rep" placeholder="rep" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -76,42 +69,40 @@
                             <form class="pure-form">
                                 <fieldset>
                                     <legend>
-                                        <h2 class="content-subhead">客戶資料資料列表</h2>
+                                        <h2 class="content-subhead">製造商資料列表</h2>
                                     </legend>
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Delete</th>
-                                                <th>customerId</th>
-                                                <th>discountCode</th>
-                                                <th>zip</th>
+                                                <th>manufacturerId</th>
                                                 <th>name</th>
                                                 <th>addressline1</th>
                                                 <th>addressline2</th>
                                                 <th>city</th>
                                                 <th>state</th>
+                                                <th>zip</th>
                                                 <th>phone</th>
                                                 <th>fax</th>
                                                 <th>email</th>
-                                                <th>creditLimit</th>
+                                                <th>rep</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach var="item" items="${list}">
                                                 <tr>
-                                                    <td title="按我一下可刪除"><a href="${pageContext.request.contextPath}/mvc/customer/${item.customerId}" class="delete">刪除</a></td>
-                                                    <td title="按我一下可修改"><a href="${pageContext.request.contextPath}/mvc/customer/${item.customerId}">${item.customerId}</a></td>
-                                                    <td title="按我一下可連結優惠碼頁面"><a href="${pageContext.request.contextPath}/mvc/discount_code/${item.discountCode}">${item.discountCode}</a></td>
-                                                    <td title="按我一下可連結市場區域頁面"><a href="${pageContext.request.contextPath}/mvc/micro_market/${item.zip}">${item.zip}</a></td>
+                                                    <td title="按我一下可刪除"><a href="${pageContext.request.contextPath}/mvc/manufacturer/${item.manufacturerId}" class="delete">刪除</a></td>
+                                                    <td title="按我一下可修改"><a href="${pageContext.request.contextPath}/mvc/manufacturer/${item.manufacturerId}">${item.manufacturerId}</a></td>
                                                     <td>${item.name}</td>
                                                     <td>${item.addressline1}</td>
                                                     <td>${item.addressline2}</td>
                                                     <td>${item.city}</td>
                                                     <td>${item.state}</td>
+                                                    <td>${item.zip}</td>
                                                     <td>${item.phone}</td>
                                                     <td>${item.fax}</td>
                                                     <td>${item.email}</td>
-                                                    <td>${item.creditLimit}</td>
+                                                    <td>${item.rep}</td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

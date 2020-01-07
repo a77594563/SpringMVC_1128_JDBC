@@ -9,14 +9,12 @@
 <div id="menu">
     <div class="pure-menu">
         <a class="pure-menu-heading" href="${pageContext.request.contextPath}/index.jsp">Derby</a>
-
         <ul class="pure-menu-list">
-            <!-- pure-menu-item menu-item-divided pure-menu-selected ..pure-menu-item-->
+            <!-- pure-menu-item menu-item-divided pure-menu-selected -->
             <c:forEach var="m" items="${menus}">
-
-            <li class="${fn:contains(pageContext.request.requestURI, m.getKey()) ? "pure-menu-item menu-item-divided pure-menu-selected" : "pure-menu-item"}" >
-                <a href="${pageContext.request.contextPath}/${m.getValue()[0]}" class="pure-menu-link">${m.getValue()[1]}</a>
-            </li>
+                <li class="${fn:contains(pageContext.request.requestURI, m.getKey()) ? "pure-menu-item menu-item-divided pure-menu-selected" : "pure-menu-item"}">
+                    <a href="${pageContext.request.contextPath}/${m.getValue()[0]}" class="pure-menu-link">${m.getValue()[1]}</a>
+                </li>
             </c:forEach>
         </ul>
     </div>
