@@ -31,7 +31,7 @@ public class DiscountCodeController {
     }
     
     @GetMapping("/{code}")
-    public String input(@PathVariable("code") String code, Model model){
+    public String get(@PathVariable("code") String code, Model model){
         DiscountCode dc = dao.getDiscountCode(code);
         model.addAttribute("po", dc);
         model.addAttribute("list", dao.queryDiscountCode());
