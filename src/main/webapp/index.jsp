@@ -13,9 +13,12 @@
                 <div class="header">
                     <h1>Derby</h1>
                     <h2>Sample Tables</h2>
+                    <h3>jdbc:derby://localhost:1527/sample</h3>
                 </div>
-
-               <img src="images/derby.png">
+                
+                <img src="images/derby.png">
+                
+            </div>
         </div>
     </body>
 </html>
