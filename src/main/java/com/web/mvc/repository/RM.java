@@ -4,6 +4,7 @@ import com.web.mvc.entity.Customer;
 import com.web.mvc.entity.DiscountCode;
 import com.web.mvc.entity.Manufacturer;
 import com.web.mvc.entity.MicroMarket;
+import com.web.mvc.entity.PUView;
 import com.web.mvc.entity.Product;
 import com.web.mvc.entity.ProductCode;
 import com.web.mvc.entity.PurchaseOrder;
@@ -84,7 +85,7 @@ public class RM {
     };
 
     static RowMapper<PurchaseOrder> purchaseOrderMapper = (ResultSet rs, int rowNum) -> {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");//假設資料庫日期設定為String
         PurchaseOrder po = new PurchaseOrder();
         po.setOrderNum(rs.getInt("ORDER_NUM"));
         po.setCustomerId(rs.getInt("CUSTOMER_ID"));
@@ -98,5 +99,20 @@ public class RM {
         }
         po.setFreightCompany(rs.getString("FREIGHT_COMPANY"));
         return po;
+    };
+    
+    static RowMapper<PUView> puViewMapper = (ResultSet rs, int rowNum) -> {
+        PUView pv = new PUView();
+        pv.setOrderNum(rs.getInt("ORDER_NUM"));
+        pv.setCustomerId(rs.getInt("CUSTOMER_ID"));
+        pv.setCustomerName(rs.getString("CUSTOMER_NAME"));
+        pv.setProductId(rs.getInt("PRODUCT_ID"));
+        pv.setProductName(rs.getString("PRODUCT_NAME"));
+        pv.setProductCodeName(rs.getString("PRODUCT_CODE_NAME"));
+        pv.setQuantity(rs.getInt("QUANTITY"));
+        pv.setPurchaseCost(rs.getDouble("PURCHASE_COST"));
+        pv.setRate(rs.getDouble("RATE"));
+        pv.setSubtotal(rs.getDouble("SUBTOTAL"));
+        return pv;
     };
 }
