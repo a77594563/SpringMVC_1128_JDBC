@@ -6,17 +6,20 @@ import com.web.mvc.entity.Manufacturer;
 import com.web.mvc.entity.MicroMarket;
 import com.web.mvc.entity.Product;
 import com.web.mvc.entity.ProductCode;
+import com.web.mvc.entity.PurchaseOrder;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import org.springframework.jdbc.core.RowMapper;
 
 public class RM {
+
     static RowMapper<DiscountCode> discountCode = (rs, i) -> {
         DiscountCode dc = new DiscountCode();
         dc.setDiscountCode(rs.getString("DISCOUNT_CODE"));
         dc.setRate(rs.getDouble("RATE"));
         return dc;
     };
-    
+
     static RowMapper<MicroMarket> microMarketMapper = (ResultSet rs, int rowNum) -> {
         MicroMarket mm = new MicroMarket();
         mm.setZipCode(rs.getString("ZIP_CODE"));
@@ -25,7 +28,7 @@ public class RM {
         mm.setAreaWidth(rs.getDouble("AREA_WIDTH"));
         return mm;
     };
-    
+
     static RowMapper<Customer> customerMapper = (ResultSet rs, int rowNum) -> {
         Customer customer = new Customer();
         customer.setCustomerId(rs.getInt("CUSTOMER_ID"));
@@ -42,7 +45,7 @@ public class RM {
         customer.setCreditLimit(rs.getInt("CREDIT_LIMIT"));
         return customer;
     };
-    
+
     static RowMapper<ProductCode> productCodeMapper = (ResultSet rs, int rowNum) -> {
         ProductCode pc = new ProductCode();
         pc.setProdCode(rs.getString("PROD_CODE"));
@@ -50,7 +53,7 @@ public class RM {
         pc.setDescription(rs.getString("DESCRIPTION"));
         return pc;
     };
-    
+
     static RowMapper<Manufacturer> manufacturerMapper = (ResultSet rs, int rowNum) -> {
         Manufacturer mf = new Manufacturer();
         mf.setManufacturerId(rs.getInt("MANUFACTURER_ID"));
@@ -66,7 +69,7 @@ public class RM {
         mf.setRep(rs.getString("REP"));
         return mf;
     };
-    
+
     static RowMapper<Product> productMapper = (ResultSet rs, int rowNum) -> {
         Product p = new Product();
         p.setProductId(rs.getInt("PRODUCT_ID"));
@@ -79,5 +82,21 @@ public class RM {
         p.setDescription(rs.getString("DESCRIPTION"));
         return p;
     };
-    
+
+    static RowMapper<PurchaseOrder> purchaseOrderMapper = (ResultSet rs, int rowNum) -> {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        PurchaseOrder po = new PurchaseOrder();
+        po.setOrderNum(rs.getInt("ORDER_NUM"));
+        po.setCustomerId(rs.getInt("CUSTOMER_ID"));
+        po.setProductId(rs.getInt("PRODUCT_ID"));
+        po.setQuantity(rs.getInt("QUANTITY"));
+        po.setShippingCost(rs.getDouble("SHIPPING_COST"));
+        try {
+            po.setSalesDate(sdf.parse(rs.getString("SALES_DATE")));
+            po.setShippingDate(sdf.parse(rs.getString("SHIPPING_DATE")));
+        } catch (Exception e) {
+        }
+        po.setFreightCompany(rs.getString("FREIGHT_COMPANY"));
+        return po;
+    };
 }

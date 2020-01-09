@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController extends BaseController{
     
     @Autowired
     @Qualifier("customerDao")

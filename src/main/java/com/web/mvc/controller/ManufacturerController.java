@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/manufacturer")
-public class ManufacturerController {
+public class ManufacturerController extends BaseController{
     @Autowired
     @Qualifier("productDao")
     private ProductDao dao;

@@ -74,5 +74,7 @@ public class Product {
         this.description = description;
     }
 
-    
+    public String getLabel() {
+        return productId + " : " + description + " $" + purchaseCost + " 量: " + quantityOnHand;
+    }
 }
