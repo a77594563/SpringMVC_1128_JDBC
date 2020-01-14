@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 @Repository(value = "customerDao")
 public class CustomerDaoImpl implements CustomerDao {
@@ -19,7 +20,8 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public List<DiscountCode> queryDiscountCode() {
         String sql = "SELECT * FROM DISCOUNT_CODE";
-        return jdbcTemplate.query(sql, RM.discountCode);
+        //return jdbcTemplate.query(sql, RM.discountCode);
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<DiscountCode>(DiscountCode.class));
     }
 
     @Override
