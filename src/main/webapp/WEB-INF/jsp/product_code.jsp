@@ -45,6 +45,7 @@
                                     <form:input path="description" placeholder="description" /><p/>
                                     <input type="hidden" id="_method" name="_method" value="${_method}">
                                     <button type="submit" class="pure-button pure-button-primary">${_method}</button>
+                                    <button type="button" class="pure-button pure-button-primary" onclick="location.href = '${pageContext.request.contextPath}/mvc/product_code/input';">reset</button>
                                 </fieldset>
                             </form:form>
                         </div>

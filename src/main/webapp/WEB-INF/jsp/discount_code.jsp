@@ -36,7 +36,7 @@
                             <form:input path="rate" placeholder="請輸入折扣" />
                             <input type="hidden" id="_method" name="_method" value="${_method}">
                             <button type="submit" class="pure-button pure-button-primary">${_method}</button>
-                            <button type="reset" class="pure-button pure-button-primary">reset</button>
+                            <button type="button" class="pure-button pure-button-primary" onclick="location.href = '${pageContext.request.contextPath}/mvc/discount_code/input';">reset</button>
                         </fieldset>
                     </form:form>
                     <h2 class="content-subhead">折扣碼資料列表</h2>
